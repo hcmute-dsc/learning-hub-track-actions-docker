@@ -101,11 +101,12 @@ flowchart LR
 Tạo nhánh, sửa một link thành tên file không có, ví dụ `href="abuot.html"`, rồi mở pull request. Job `check-links` đỏ, log có dạng:
 
 ```text
-[index.html]:
-[ERROR] file:///home/runner/work/portfolio/portfolio/abuot.html (at 12:12) | File not found. Check if file exists and path is correct
+### Errors in index.html
+
+* [ERROR] <file:///home/runner/work/portfolio/portfolio/abuot.html> (at 12:12) | File not found. Check if file exists and path is correct
 ```
 
-Dòng đó nói rõ file nào (`index.html`) chứa link hỏng nào. Sửa lại, push lên nhánh: PR tự chạy lại và xanh.
+Log cho biết file nào (`index.html`) chứa link hỏng nào, ở dòng và cột nào (`12:12`). Sửa lại, push lên nhánh: PR tự chạy lại và xanh.
 
 ## Kiểm tra cả link ra ngoài?
 

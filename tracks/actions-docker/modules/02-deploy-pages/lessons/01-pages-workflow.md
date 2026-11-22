@@ -85,6 +85,8 @@ jobs:
 
 Portfolio để trong thư mục con, ví dụ `site/`? Đổi `path: site`.
 
+Với `path: .`, mọi file không bắt đầu bằng dấu chấm đều lên site, kể cả `Dockerfile` và `compose.yaml` bạn thêm ở các chương sau. Không sao, vì chúng không chứa bí mật; mật khẩu nằm trong `.env`, file này không bao giờ vào repo (chương 6).
+
 ## 4. Chạy
 
 Commit và push lên `main`. Trong tab **Actions**, lần chạy **Deploy Pages** có link trang ngay dưới tên job `deploy`. Lần đầu có thể mất 1–2 phút trang mới hiện.

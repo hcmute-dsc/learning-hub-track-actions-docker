@@ -46,7 +46,7 @@ Track **GitHub Actions và Docker: từ portfolio đến pipeline** chủ yếu 
 - Lần `up` đầu tiên phải tải image Umami và Postgres. Nhắc người học `docker compose pull` trước buổi để không mất thời gian.
 - Lỗi "db chưa sẵn sàng" lúc có lúc không, tuỳ máy. Máy nhanh không thấy lỗi thì giải thích nguyên nhân rồi chuyển sang lỗi khác, đừng mất thời gian cố tái hiện.
 - Ai đổi mật khẩu trong `.env` giữa chừng sẽ gặp `password authentication failed` (Lỗi 4). Đây là dịp tốt để nói về volume.
-- Repo demo của người dạy nên **public** để không tốn phút Actions và để package GHCR chuyển public được.
+- Repo demo của người dạy nên **public** để không tốn phút Actions và để package GHCR tự public theo repo, người học `docker pull` được ngay.
 
 ## Review dự án
 

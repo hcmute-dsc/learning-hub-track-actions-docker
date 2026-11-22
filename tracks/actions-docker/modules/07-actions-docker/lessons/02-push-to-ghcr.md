@@ -129,7 +129,7 @@ Workflow chạy với event push tag, sinh image tag `1.0.0` bên cạnh `sha-�
 
 ## Xem và kéo image về
 
-Sau lần chạy xanh trên `main`, trang repo có mục **Packages** ở cột bên phải. Package mới tạo mặc định là **private**. Muốn ai cũng kéo về được: mở package → **Package settings** → **Change visibility** → **Public**.
+Sau lần chạy xanh trên `main`, trang repo có mục **Packages** ở cột bên phải. Package được push bằng `GITHUB_TOKEN` từ workflow của repo được nối với repo đó và lấy theo quyền xem của repo: repo public thì package cũng public, ai cũng kéo về được. Nếu `docker pull` khi chưa đăng nhập báo `denied` hoặc `unauthorized`, mở package → **Package settings** → **Change visibility** → **Public**.
 
 Thử trên máy, đổi `an/portfolio` thành repo của bạn (chữ thường):
 
@@ -138,7 +138,7 @@ docker pull ghcr.io/an/portfolio:main
 docker run -d --name from-ghcr -p 8080:80 ghcr.io/an/portfolio:main
 ```
 
-Package còn private thì cần đăng nhập trước bằng `docker login ghcr.io` với một Personal Access Token có quyền `read:packages`.
+Package private (ví dụ của repo private) thì cần đăng nhập trước bằng `docker login ghcr.io` với một Personal Access Token có quyền `read:packages`.
 
 ## Khi lỗi
 
