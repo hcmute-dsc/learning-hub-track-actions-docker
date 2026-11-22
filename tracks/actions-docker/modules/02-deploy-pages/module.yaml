@@ -1,0 +1,10 @@
+uid: f791c76f-dd51-4da6-8e67-417039643d35
+slug: deploy-pages
+title: "Deploy portfolio lên GitHub Pages"
+summary: "Mỗi lần push lên main, GitHub Actions tự đưa portfolio lên GitHub Pages, sau khi đã kiểm tra không có link hỏng."
+lessons:
+  - 01-pages-workflow
+  - 02-link-check
+exercises:
+  - pages-quiz
+  - portfolio-online

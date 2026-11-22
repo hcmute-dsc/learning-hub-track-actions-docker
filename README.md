@@ -1,16 +1,35 @@
-# Track mẫu
+# GitHub Actions và Docker: từ portfolio đến pipeline
 
 Repo nội dung của **một track** trên [DSC Learning Hub](https://learn.hcmute-dsc.io.vn). Mỗi track một repo `hcmute-dsc/learning-hub-track-<slug>`, cùng tạo từ template [`learning-hub-track-template`](https://github.com/hcmute-dsc/learning-hub-track-template) ([ADR-10](https://github.com/hcmute-dsc/learning-hub-docs/blob/main/docs/product/DECISIONS.md#adr-10--mỗi-track-một-repo-learning-hub-content-thành-registry)).
+
+## Track này dạy gì
+
+Người học đã xong Git/GitHub và có một portfolio HTML/CSS. Portfolio là dự án xuyên suốt 8 chương; phần lớn tự học, kèm 2 buổi online × 2 giờ.
+
+| Chương | Nội dung | Bài tập |
+| --- | --- | --- |
+| 1. GitHub Actions cơ bản | workflow, job, step, runner, đọc log | quiz · self_check |
+| 2. Deploy portfolio lên GitHub Pages | `actions/deploy-pages`, kiểm tra link hỏng bằng lychee | quiz · self_check |
+| 3. Docker là gì | image, container, `run`/`ps`/`logs`/`exec`/`rm`, `-p`, `-e` | self_check (hello-world) · quiz |
+| 4. Dockerfile | `nginx:alpine`, layer, cache, `.dockerignore`, tag | quiz · **project** |
+| 5. Volume và network | named volume với Postgres, gọi nhau bằng tên | quiz |
+| 6. Docker Compose | portfolio + Umami + Postgres, `.env`, healthcheck, gỡ lỗi | quiz · self_check |
+| 7. Quay lại Actions | test stack trong CI, push image lên GHCR, workflow an toàn | quiz · **project** |
+| 8. Dự án cuối | repo portfolio với pipeline đầy đủ, README, badge | **project** |
+
+- **Mentor dạy 2 buổi online:** [docs/teaching-guide.md](docs/teaching-guide.md).
+- Cài đặt cho người học: [`tracks/actions-docker/docs/setup.md`](tracks/actions-docker/docs/setup.md).
+- Mọi code mẫu (Dockerfile, `compose.yaml`, workflow) đã được chạy thử với Docker 29 / Compose v5 và kiểm tra bằng actionlint 1.7.12. Khi nâng phiên bản image hay action, chạy thử lại trước khi sửa bài.
 
 ## Cấu trúc
 
 ```
-tracks/example-track/        # đúng MỘT thư mục, tên = slug của track
+tracks/actions-docker/        # đúng MỘT thư mục, tên = slug của track
   track.yaml                 # thông tin track + danh sách chương
   docs/setup.md              # tuỳ chọn: trang "Cài đặt" (cài công cụ, tự kiểm tra bài)
   docs/resources.md          # tuỳ chọn: trang "Tài liệu thêm"
   assets/                    # ảnh (≤ 500 KB/ảnh)
-  modules/01-getting-started/
+  modules/01-actions-basics/
     module.yaml              # danh sách bài học và bài tập của chương
     lessons/*.md             # bài học: thông tin ở đầu file + Markdown
     exercises/<slug>/

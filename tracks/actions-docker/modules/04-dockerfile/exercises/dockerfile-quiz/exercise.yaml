@@ -1,0 +1,41 @@
+uid: da6e1e56-5f9e-4d80-898a-2ba1a9c63ca3
+slug: dockerfile-quiz
+title: "Kiểm tra: Dockerfile"
+type: quiz
+difficulty: easy
+lesson: layers-cache-tags
+estimatedMinutes: 10
+authors: [github:TienNHM]
+spec:
+  passScore: 0.75
+  questions:
+    - id: q1
+      type: single
+      prompt: "Dấu `.` ở cuối `docker build -t portfolio:dev .` là gì?"
+      options:
+        - "Tên image"
+        - "Thư mục build: nơi có Dockerfile và file dùng cho COPY"
+        - "Ký tự kết thúc lệnh, có thể bỏ"
+      answer: 1
+      explanation: "Đó là build context. Thiếu nó, lệnh build báo lỗi."
+    - id: q2
+      type: single
+      prompt: "Dockerfile có `EXPOSE 80`. Chạy `docker run -d portfolio:dev` (không có `-p`) thì mở được http://localhost:80 không?"
+      options: ["Có, EXPOSE đã mở cổng", "Không, phải có -p để nối cổng ra máy"]
+      answer: 1
+      explanation: "`EXPOSE` chỉ là ghi chú; `-p` mới nối cổng."
+    - id: q3
+      type: multiple
+      prompt: "Những file nào nên có trong `.dockerignore` của portfolio?"
+      options: [".git", ".env", "index.html", "style.css"]
+      answer: [0, 1]
+      explanation: "`.git` làm image to và lộ lịch sử; `.env` chứa mật khẩu và sẽ bị nginx phục vụ công khai. HTML và CSS là thứ cần đưa vào."
+    - id: q4
+      type: single
+      prompt: "App Node.js: thứ tự nào tận dụng cache tốt nhất khi bạn sửa code hằng ngày?"
+      options:
+        - "COPY . . → RUN npm ci"
+        - "COPY package.json package-lock.json ./ → RUN npm ci → COPY . ."
+        - "RUN npm ci → COPY . ."
+      answer: 1
+      explanation: "Cài thư viện trước khi chép code, để sửa code không làm `npm ci` chạy lại. Phương án 3 không chạy được vì lúc `npm ci` chưa có `package.json`."

@@ -1,0 +1,11 @@
+uid: 6a8fe720-15ad-40ff-8dae-0e0fa4ccb374
+slug: compose
+title: "Docker Compose"
+summary: "Viết compose.yaml chạy portfolio cùng Umami (thống kê truy cập) và Postgres bằng một lệnh; giữ mật khẩu trong .env ngoài Git; chờ database sẵn sàng bằng healthcheck; tự sửa các lỗi hay gặp."
+lessons:
+  - 01-compose-basics
+  - 02-umami-postgres
+  - 03-debugging
+exercises:
+  - compose-quiz
+  - compose-stack

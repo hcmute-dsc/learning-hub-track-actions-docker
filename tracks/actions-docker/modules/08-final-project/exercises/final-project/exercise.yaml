@@ -1,0 +1,26 @@
+uid: dd9a0a0d-b570-498b-aed1-f99fa5dfc4ab
+slug: final-project
+title: "Portfolio với pipeline đầy đủ"
+type: project
+difficulty: hard
+lesson: project-guide
+estimatedMinutes: 240
+requiresReview: true
+prerequisites:
+  - actions-docker/actions-docker/ci-pipeline
+authors: [github:TienNHM]
+spec:
+  deliverable: github_repo_or_pr
+  rubric:
+    - criterion: "Pages: check-links chạy trước, deploy chỉ khi push lên main; trang chạy đủ CSS và ảnh"
+      weight: 2
+    - criterion: "Dockerfile và .dockerignore đúng; image nền có tag cụ thể"
+      weight: 1
+    - criterion: "Compose: clone mới, tạo .env từ .env.example, up -d --wait là 3 service healthy; volume cho Postgres; Umami đếm được lượt xem"
+      weight: 3
+    - criterion: "CI: docker.yml test stack trên push và PR, push image GHCR (public) chỉ khi push lên main"
+      weight: 3
+    - criterion: "An toàn: permissions tối thiểu, không pull_request_target, không in secret, .env chưa từng bị commit"
+      weight: 2
+    - criterion: "README: badge, cách chạy, cách pull image, mô tả pipeline và bằng chứng"
+      weight: 1

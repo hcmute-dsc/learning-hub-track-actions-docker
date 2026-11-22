@@ -1,0 +1,22 @@
+uid: 8365687e-8418-4e4d-883d-dd3997ed1f25
+slug: dockerize-portfolio
+title: "Đóng gói portfolio bằng Docker"
+type: project
+difficulty: medium
+lesson: first-dockerfile
+estimatedMinutes: 60
+requiresReview: true
+prerequisites:
+  - actions-docker/docker-basics/docker-hello
+authors: [github:TienNHM]
+spec:
+  deliverable: github_repo_or_pr
+  rubric:
+    - criterion: "Build và chạy được theo README; portfolio hiện đủ ở localhost:8080"
+      weight: 3
+    - criterion: ".dockerignore bỏ .git và .env; /Dockerfile và /.env trả về 404"
+      weight: 2
+    - criterion: "Image nền có tag cụ thể (không latest); có image tag phiên bản"
+      weight: 1
+    - criterion: "README có lệnh build/run, ảnh chụp và output docker image ls"
+      weight: 1

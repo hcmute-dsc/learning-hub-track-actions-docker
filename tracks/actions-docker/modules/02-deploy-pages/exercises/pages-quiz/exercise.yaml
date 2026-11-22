@@ -1,0 +1,41 @@
+uid: d12c45ae-c9b1-413d-85e0-4413c75611a1
+slug: pages-quiz
+title: "Kiểm tra: deploy GitHub Pages"
+type: quiz
+difficulty: easy
+lesson: link-check
+estimatedMinutes: 10
+authors: [github:TienNHM]
+spec:
+  passScore: 0.75
+  questions:
+    - id: q1
+      type: single
+      prompt: "Job `deploy` có `needs: check-links`. Nếu `check-links` đỏ thì sao?"
+      options:
+        - "deploy vẫn chạy, nhưng chậm hơn"
+        - "deploy bị bỏ qua, trang cũ giữ nguyên"
+        - "deploy chạy trước rồi mới kiểm tra"
+      answer: 1
+      explanation: "`needs` bắt job chờ và chỉ chạy khi job kia thành công."
+    - id: q2
+      type: multiple
+      prompt: "Job deploy lên Pages cần thêm những quyền nào ngoài `contents: read`?"
+      options: ["pages: write", "id-token: write", "packages: write", "issues: write"]
+      answer: [0, 1]
+      explanation: "`pages: write` để ghi lên Pages, `id-token: write` để Pages xác minh lần deploy."
+    - id: q3
+      type: single
+      prompt: "Repo `portfolio` của tài khoản `an` có trang ở `https://an.github.io/portfolio/`. Link CSS nào chạy đúng?"
+      options: ["/style.css", "style.css", "C:/portfolio/style.css"]
+      answer: 1
+      explanation: "Link tương đối tính từ trang hiện tại, nên vẫn đúng khi trang nằm trong thư mục con `/portfolio/`."
+    - id: q4
+      type: single
+      prompt: "Vì sao bài học dùng `lychee --offline`?"
+      options:
+        - "Để chạy không cần mạng trên máy bạn"
+        - "Chỉ kiểm tra link trong repo, nên kết quả không đỏ vì trang ngoài chậm hay chặn bot"
+        - "Vì lychee không kiểm tra được link ra ngoài"
+      answer: 1
+      explanation: "Link ra ngoài kiểm tra được, nhưng dễ đỏ vì lý do ngoài tầm tay, không nên chặn deploy."
