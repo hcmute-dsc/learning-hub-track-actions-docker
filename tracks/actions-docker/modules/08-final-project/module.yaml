@@ -1,0 +1,8 @@
+uid: ff8930ab-e6f1-4252-93f2-447cf64fb357
+slug: final-project
+title: "Dự án cuối"
+summary: "Hoàn thiện repo portfolio với pipeline đầy đủ: kiểm tra link, deploy Pages, test stack Compose, push image lên GHCR, README có badge. Mentor review theo rubric."
+lessons:
+  - 01-project-guide
+exercises:
+  - final-project

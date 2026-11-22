@@ -1,0 +1,46 @@
+uid: 950343b9-1f34-4722-9194-1b5319b9dd0d
+slug: docker-quiz
+title: "Kiểm tra: Docker cơ bản"
+type: quiz
+difficulty: easy
+lesson: docker-commands
+estimatedMinutes: 10
+authors: [github:TienNHM]
+spec:
+  passScore: 0.8
+  questions:
+    - id: q1
+      type: single
+      prompt: "Câu nào đúng về image và container?"
+      options:
+        - "Một image chỉ chạy được một container"
+        - "Container là một bản đang chạy của image; một image chạy được nhiều container"
+        - "Xóa container thì image cũng bị xóa"
+      answer: 1
+      explanation: "Image là khuôn chỉ đọc; mỗi `docker run` tạo một container mới từ nó."
+    - id: q2
+      type: single
+      prompt: "Lệnh `docker run -d -p 3000:80 nginx:1.30-alpine`. Mở trang ở đâu?"
+      options: ["http://localhost:80", "http://localhost:3000", "http://localhost:8080"]
+      answer: 1
+      explanation: "`-p` là `cổng-máy-bạn:cổng-trong-container`, nên máy bạn mở cổng 3000."
+    - id: q3
+      type: single
+      prompt: "Container không chạy như ý. Lệnh nào nên dùng đầu tiên để tìm nguyên nhân?"
+      options: ["docker logs <tên>", "docker rm <tên>", "docker pull <image>"]
+      answer: 0
+      explanation: "`docker logs` in output của tiến trình trong container, thường có ngay thông báo lỗi."
+    - id: q4
+      type: single
+      prompt: "Vì sao nên dùng `nginx:1.30-alpine` thay vì `nginx` (tức `nginx:latest`)?"
+      options:
+        - "Vì latest không tồn tại"
+        - "Vì latest có thể đổi phiên bản bất cứ lúc nào, làm kết quả không lặp lại được"
+        - "Vì tag dài chạy nhanh hơn"
+      answer: 1
+      explanation: "Tag cụ thể giữ đúng phiên bản bạn đã thử."
+    - id: q5
+      type: short_text
+      prompt: "Bạn chạy container mới với `-p 8080:80` và gặp lỗi `port is already allocated`. Gõ lệnh liệt kê các container đang chạy để tìm container đang giữ cổng."
+      answer: ["docker ps", "docker container ls", "docker container ps"]
+      explanation: "`docker ps` hiện cột PORTS cho biết container nào đang dùng cổng 8080."

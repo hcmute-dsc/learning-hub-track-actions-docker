@@ -1,0 +1,18 @@
+uid: 0d2adff0-de8d-4c5a-b561-6eceda1054ce
+slug: compose-stack
+title: "Portfolio, Umami và Postgres trên máy"
+type: self_check
+difficulty: medium
+lesson: umami-postgres
+estimatedMinutes: 60
+prerequisites:
+  - actions-docker/dockerfile/dockerize-portfolio
+authors: [github:TienNHM]
+spec:
+  checklist:
+    - "docker compose up -d --wait chạy xong, docker compose ps thấy cả 3 service healthy"
+    - ".env nằm trong .gitignore; repo có .env.example; git status không hiện .env"
+    - "Đã đổi mật khẩu admin mặc định của Umami"
+    - "Đã gắn mã theo dõi vào portfolio và thấy lượt xem tăng trong Umami"
+    - "Sau docker compose down rồi up lại, website và lượt xem trong Umami vẫn còn"
+    - "Đã tự tạo và sửa ít nhất 2 trong 4 lỗi ở bài Gỡ lỗi Compose"

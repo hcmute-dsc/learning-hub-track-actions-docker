@@ -1,0 +1,54 @@
+uid: 8c0cdbed-8632-44ae-916e-e30de56d74bb
+slug: security-quiz
+title: "Kiểm tra: CI và an toàn cho workflow"
+type: quiz
+difficulty: medium
+lesson: workflow-security
+estimatedMinutes: 10
+authors: [github:TienNHM]
+spec:
+  passScore: 0.8
+  questions:
+    - id: q1
+      type: single
+      prompt: "Workflow ghi `permissions: contents: read` ở cấp workflow. Job push-image cần ghi lên GHCR thì làm gì?"
+      options:
+        - "Đổi cấp workflow thành write-all"
+        - "Ghi permissions trong job đó: contents: read và packages: write"
+        - "Tạo Personal Access Token và lưu vào secret"
+      answer: 1
+      explanation: "Job tự xin đúng quyền nó cần; GITHUB_TOKEN với packages: write là đủ cho GHCR."
+    - id: q2
+      type: single
+      prompt: "Một PR từ fork chạy workflow có event `pull_request`. Job trong đó push được image lên GHCR của bạn không?"
+      options: ["Được, nếu job xin packages: write", "Không, token của PR từ fork chỉ có quyền đọc và không có secret"]
+      answer: 1
+      explanation: "GitHub hạ quyền token và giữ lại secret với PR từ fork."
+    - id: q3
+      type: single
+      prompt: "Workflow `pull_request_target` checkout `github.event.pull_request.head.sha` rồi chạy `docker build .`. Rủi ro là gì?"
+      options:
+        - "Không có rủi ro, vì đây là repo của bạn"
+        - "Code của người lạ chạy với secret và token có quyền ghi của bạn"
+        - "Build sẽ chậm hơn"
+      answer: 1
+      explanation: "pull_request_target có secret và quyền ghi; chạy code của PR trong đó là trao quyền cho người mở PR."
+    - id: q4
+      type: multiple
+      prompt: "Những cách nào có thể làm lộ secret ra log?"
+      options:
+        - "echo secret qua base64 rồi in"
+        - "Bật set -x trong step có secret"
+        - "Đưa secret vào env: rồi dùng trong lệnh curl, không in ra"
+        - "Truyền GITHUB_TOKEN vào input password của docker/login-action"
+      answer: [0, 1]
+      explanation: "GitHub chỉ che đúng chuỗi secret; biến đổi hoặc set -x làm lọt. Hai cách sau là cách dùng đúng."
+    - id: q5
+      type: single
+      prompt: "Trong job test, vì sao `docker compose up -d --wait` vẫn xanh khi cổng Umami bị ghi sai thành `3000:3001`, còn step curl thì đỏ?"
+      options:
+        - "Vì --wait không kiểm tra gì"
+        - "Vì healthcheck chạy bên trong container, còn curl gọi từ runner qua cổng đã nối sai"
+        - "Vì curl thiếu cờ -f"
+      answer: 1
+      explanation: "Healthcheck trả lời 'bên trong có chạy không', curl trả lời 'người dùng có vào được không'."

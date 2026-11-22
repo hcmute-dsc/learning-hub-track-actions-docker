@@ -1,0 +1,22 @@
+uid: f7b1537f-2dce-43fb-a266-eaaeadff3b1c
+slug: ci-pipeline
+title: "Pipeline: test stack và push image lên GHCR"
+type: project
+difficulty: medium
+lesson: push-to-ghcr
+estimatedMinutes: 90
+requiresReview: true
+prerequisites:
+  - actions-docker/compose/compose-stack
+authors: [github:TienNHM]
+spec:
+  deliverable: github_repo_or_pr
+  rubric:
+    - criterion: "Job test chạy compose với --wait, kiểm tra bằng curl -f, in log khi lỗi; chạy xanh trên pull request"
+      weight: 3
+    - criterion: "Image trên GHCR (public) có tag main và sha-…, pull về chạy được"
+      weight: 3
+    - criterion: "permissions tối thiểu, push-image chỉ chạy với event push, không pull_request_target, không in secret"
+      weight: 2
+    - criterion: "README có link lần chạy xanh, link PR và lệnh docker pull/run"
+      weight: 1

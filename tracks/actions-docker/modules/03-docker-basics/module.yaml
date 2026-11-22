@@ -1,0 +1,10 @@
+uid: 28a61cd0-8953-4e3b-9d7d-479c6a3f8505
+slug: docker-basics
+title: "Docker là gì"
+summary: "Phân biệt image và container, cài Docker Desktop, rồi chạy, xem log, vào trong và dọn dẹp container bằng vài lệnh cơ bản."
+lessons:
+  - 01-image-container
+  - 02-docker-commands
+exercises:
+  - docker-hello
+  - docker-quiz

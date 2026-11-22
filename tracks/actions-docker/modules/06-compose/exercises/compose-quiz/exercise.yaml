@@ -1,0 +1,47 @@
+uid: a3cf7a25-719b-4202-88e6-29ef20222a6d
+slug: compose-quiz
+title: "Kiểm tra: Docker Compose"
+type: quiz
+difficulty: medium
+lesson: umami-postgres
+estimatedMinutes: 10
+authors: [github:TienNHM]
+spec:
+  passScore: 0.8
+  questions:
+    - id: q1
+      type: multiple
+      prompt: "Những file nào nên commit lên repo portfolio?"
+      options: ["compose.yaml", ".env", ".env.example", ".gitignore có dòng .env"]
+      answer: [0, 2, 3]
+      explanation: "Chỉ `.env` chứa mật khẩu thật; nó phải nằm ngoài Git."
+    - id: q2
+      type: single
+      prompt: "`depends_on: [db]` (dạng ngắn) làm Umami chờ tới khi nào?"
+      options:
+        - "Tới khi Postgres nhận kết nối"
+        - "Tới khi container db bắt đầu chạy, Postgres có thể chưa sẵn sàng"
+        - "Không chờ gì cả"
+      answer: 1
+      explanation: "Muốn chờ Postgres thật sự sẵn sàng thì cần healthcheck và `condition: service_healthy`."
+    - id: q3
+      type: single
+      prompt: "Lệnh nào xóa container nhưng GIỮ dữ liệu Postgres trong named volume?"
+      options: ["docker compose down", "docker compose down -v", "docker volume rm portfolio_umami-db"]
+      answer: 0
+      explanation: "`-v` xóa cả volume."
+    - id: q4
+      type: single
+      prompt: "Umami healthy, nhưng `curl localhost:3000` báo `Empty reply from server`. Nên kiểm tra gì trước?"
+      options: ["Mật khẩu trong .env", "Phần ports trong compose.yaml", "Image postgres"]
+      answer: 1
+      explanation: "Healthcheck chạy bên trong container nên vẫn xanh; lỗi ở chỗ nối cổng, ví dụ `3000:3001`."
+    - id: q5
+      type: single
+      prompt: "Trong `compose.yaml`, `${POSTGRES_PASSWORD}` lấy giá trị từ đâu?"
+      options:
+        - "Từ file .env cạnh compose.yaml, Compose tự đọc"
+        - "Từ GitHub Secrets"
+        - "Từ Dockerfile"
+      answer: 0
+      explanation: "Compose tự đọc `.env` trong thư mục project để thay các biến `${...}`."

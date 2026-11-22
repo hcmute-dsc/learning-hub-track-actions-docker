@@ -1,0 +1,10 @@
+uid: 1deea3c0-720f-435d-b03b-ec416ffb1f05
+slug: dockerfile
+title: "Dockerfile"
+summary: "Đóng gói portfolio thành image riêng dựa trên nginx:alpine; hiểu layer và cache, dùng .dockerignore và đặt tag phiên bản."
+lessons:
+  - 01-first-dockerfile
+  - 02-layers-cache-tags
+exercises:
+  - dockerfile-quiz
+  - dockerize-portfolio

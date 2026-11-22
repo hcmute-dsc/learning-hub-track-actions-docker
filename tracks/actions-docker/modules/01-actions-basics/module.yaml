@@ -1,0 +1,10 @@
+uid: 73495755-a473-41eb-a088-80adc2034295
+slug: actions-basics
+title: "GitHub Actions cơ bản"
+summary: "Viết workflow đầu tiên chạy mỗi lần push, hiểu workflow, job, step, runner, và đọc log để sửa khi một lần chạy bị đỏ."
+lessons:
+  - 01-first-workflow
+  - 02-read-the-log
+exercises:
+  - actions-quiz
+  - first-workflow

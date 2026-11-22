@@ -1,0 +1,9 @@
+uid: 6af74ba5-16df-4c69-8d2f-5b7befcc537c
+slug: volumes-networks
+title: "Volume và network"
+summary: "Giữ dữ liệu Postgres khi xóa container bằng named volume, và cho các container gọi nhau bằng tên qua một network riêng."
+lessons:
+  - 01-volumes
+  - 02-networks
+exercises:
+  - volume-network-quiz

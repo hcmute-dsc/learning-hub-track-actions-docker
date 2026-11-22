@@ -1,0 +1,15 @@
+uid: 84789f03-cdf5-466c-a6d2-86d98d9fdb7c
+slug: docker-hello
+title: "Cài Docker và chạy hello-world"
+type: self_check
+difficulty: easy
+lesson: image-container
+estimatedMinutes: 45
+authors: [github:TienNHM]
+spec:
+  checklist:
+    - "Đã cài Docker (Docker Desktop, Docker Engine hoặc Codespaces) và docker --version in ra phiên bản"
+    - "docker run hello-world in ra dòng Hello from Docker!"
+    - "Đã gửi ảnh chụp màn hình kết quả hello-world vào kênh Discord của track"
+    - "Đã chạy nginx với -p 8080:80 và mở được http://localhost:8080"
+    - "Đã dùng docker logs, docker exec và docker rm -f trên container đó"

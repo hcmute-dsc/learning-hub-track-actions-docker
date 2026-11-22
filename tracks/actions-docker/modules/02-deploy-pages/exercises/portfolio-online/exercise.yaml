@@ -1,0 +1,16 @@
+uid: b363d89a-b251-48af-a641-14394e45a4a8
+slug: portfolio-online
+title: "Portfolio lên mạng"
+type: self_check
+difficulty: easy
+lesson: link-check
+estimatedMinutes: 40
+prerequisites:
+  - actions-docker/actions-basics/first-workflow
+authors: [github:TienNHM]
+spec:
+  checklist:
+    - "Portfolio mở được qua link GitHub Pages, có đủ CSS và ảnh"
+    - "Workflow có job check-links, và deploy dùng needs: check-links"
+    - "Đã thử mở một pull request có link hỏng và thấy check-links đỏ"
+    - "Đã gửi link trang Pages vào kênh Discord của track"

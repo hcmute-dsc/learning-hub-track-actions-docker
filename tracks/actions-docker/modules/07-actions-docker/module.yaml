@@ -1,0 +1,11 @@
+uid: 96e28298-9bd2-4a7f-baf9-21d6bb16898f
+slug: actions-docker
+title: "Quay lại Actions: build, test, bảo mật"
+summary: "Để GitHub Actions chạy cả stack Compose và kiểm tra bằng curl, build rồi push image portfolio lên GHCR, và giữ workflow an toàn: permissions tối thiểu, không in secret, cẩn thận với pull_request_target."
+lessons:
+  - 01-test-compose-in-ci
+  - 02-push-to-ghcr
+  - 03-workflow-security
+exercises:
+  - security-quiz
+  - ci-pipeline
