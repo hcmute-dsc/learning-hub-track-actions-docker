@@ -37,7 +37,8 @@ portfolio/
 ```mermaid
 flowchart LR
   P["git push lên main"] --> L["pages.yml: check-links"]
-  L --> D["deploy lên GitHub Pages"]
+  L --> B["build: đóng gói trang"]
+  B --> D["deploy lên GitHub Pages"]
   P --> T["docker.yml: test stack Compose"]
   T --> G["push image lên GHCR"]
   PR["pull request"] --> L2["check-links"]
@@ -102,7 +103,7 @@ Rồi đi qua danh sách:
 
 - [ ] Hai badge đều xanh.
 - [ ] Trang GitHub Pages mở được, đủ CSS và ảnh.
-- [ ] Mở một pull request thử: `check-links` và `test` chạy; `deploy` và `push-image` bị bỏ qua.
+- [ ] Mở một pull request thử: `check-links` và `test` chạy; `build`, `deploy` và `push-image` bị bỏ qua.
 - [ ] Package GHCR public, `docker pull` về chạy được khi chưa đăng nhập.
 - [ ] `git log --all --oneline -- .env` không in gì (chưa từng commit `.env`).
 - [ ] Đã chạy actionlint trên máy, không báo lỗi.

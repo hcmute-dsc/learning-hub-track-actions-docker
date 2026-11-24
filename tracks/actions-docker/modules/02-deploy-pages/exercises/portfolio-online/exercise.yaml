@@ -11,6 +11,6 @@ authors: [github:TienNHM]
 spec:
   checklist:
     - "Portfolio mở được qua link GitHub Pages, có đủ CSS và ảnh"
-    - "Workflow có job check-links, và deploy dùng needs: check-links"
+    - "Workflow có ba job check-links → build → deploy, nối bằng needs"
     - "Đã thử mở một pull request có link hỏng và thấy check-links đỏ"
     - "Đã gửi link trang Pages vào kênh Discord của track"

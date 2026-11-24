@@ -11,19 +11,19 @@ spec:
   questions:
     - id: q1
       type: single
-      prompt: "Job `deploy` có `needs: check-links`. Nếu `check-links` đỏ thì sao?"
+      prompt: "Chuỗi job là check-links → build → deploy, nối bằng `needs`. Nếu `check-links` đỏ thì job deploy thế nào?"
       options:
         - "deploy vẫn chạy, nhưng chậm hơn"
         - "deploy bị bỏ qua, trang cũ giữ nguyên"
         - "deploy chạy trước rồi mới kiểm tra"
       answer: 1
-      explanation: "`needs` bắt job chờ và chỉ chạy khi job kia thành công."
+      explanation: "`needs` bắt job chờ và chỉ chạy khi job kia thành công; build bị bỏ qua thì deploy (needs: build) cũng bị bỏ qua."
     - id: q2
       type: multiple
-      prompt: "Job deploy lên Pages cần thêm những quyền nào ngoài `contents: read`?"
+      prompt: "Job `deploy` chỉ có một step là `actions/deploy-pages`. Nó cần những quyền nào?"
       options: ["pages: write", "id-token: write", "packages: write", "issues: write"]
       answer: [0, 1]
-      explanation: "`pages: write` để ghi lên Pages, `id-token: write` để Pages xác minh lần deploy."
+      explanation: "`pages: write` để ghi lên Pages, `id-token: write` để Pages xác minh lần deploy. Job này không checkout nên không cần contents."
     - id: q3
       type: single
       prompt: "Repo `portfolio` của tài khoản `an` có trang ở `https://an.github.io/portfolio/`. Link CSS nào chạy đúng?"
