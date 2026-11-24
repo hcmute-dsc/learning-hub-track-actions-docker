@@ -5,7 +5,7 @@ Làm theo thứ tự, ghi chú cho từng tiêu chí của rubric:
 1. **Đọc README như người lạ.** Chỉ dùng những gì README ghi. Thiếu bước tạo `.env` hay sai lệnh là trừ ở tiêu chí README, kể cả khi bạn tự đoán ra được.
 2. **Clone mới và chạy:** `cp .env.example .env`, `docker compose up -d --wait`, `docker compose ps`. Cả 3 service phải healthy. Mở `localhost:8080`, `localhost:3000`. Xong thì `docker compose down -v`.
 3. **Xem workflow:** mở hai file trong `.github/workflows/`, kiểm tra `permissions`, các `if`, `needs`, phiên bản action. Tìm `pull_request_target`, `echo` có `secrets.`, `set -x`.
-4. **Xem bằng chứng:** link lần chạy xanh trên `main`, link PR có `deploy` và `push-image` bị **skipped**.
+4. **Xem bằng chứng:** link lần chạy xanh trên `main`, link PR có `build`, `deploy` và `push-image` bị **skipped**. Job `deploy` của Pages phải có `needs: build` (upload và deploy cùng một job hay báo không tìm thấy artifact).
 5. **GHCR:** `docker logout ghcr.io` (nếu đã đăng nhập) rồi `docker pull ghcr.io/<owner>/<repo>:main`, chạy thử với `-p 8080:80`.
 6. **Lịch sử `.env`:** trong thư mục đã clone, `git log --all --oneline -- .env` phải không in gì. Nếu có, hướng dẫn thành viên đổi mọi mật khẩu từng nằm trong đó; xóa file ở commit mới không đủ.
 

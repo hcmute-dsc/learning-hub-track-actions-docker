@@ -1,4 +1,4 @@
-Đưa portfolio của bạn lên GitHub Pages bằng workflow ở chương này, có job kiểm tra link chạy trước job deploy. Đánh dấu từng mục khi xong.
+Đưa portfolio của bạn lên GitHub Pages bằng workflow ở chương này, có job kiểm tra link chạy trước hai job build và deploy. Đánh dấu từng mục khi xong.
 
 Trước buổi online đầu tiên, gửi link trang Pages của bạn vào kênh Discord của track để mentor biết bạn đã xong phần này.
 

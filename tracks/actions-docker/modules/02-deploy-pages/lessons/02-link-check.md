@@ -5,7 +5,7 @@ title: "Chặn link hỏng trước khi deploy"
 estimatedMinutes: 30
 objectives:
   - "Thêm job kiểm tra link hỏng bằng lychee"
-  - "Dùng needs để chỉ deploy khi kiểm tra đã qua"
+  - "Dùng needs nối check-links → build → deploy để chỉ deploy khi kiểm tra đã qua"
   - "Chạy kiểm tra trên pull request mà không deploy"
 prerequisites:
   - actions-docker/deploy-pages/pages-workflow
@@ -49,22 +49,11 @@ jobs:
           args: --offline --no-progress '**/*.html'
           fail: true
 
-  deploy:
+  build:
     needs: check-links
-    # Chỉ deploy khi push lên main hoặc bấm Run workflow, không deploy từ pull request
+    # Chỉ đóng gói và deploy khi push lên main hoặc bấm Run workflow, không làm từ pull request
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    # Không cho hai lần deploy chạy chồng lên nhau
-    concurrency:
-      group: pages
-      cancel-in-progress: false
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
 
@@ -75,6 +64,20 @@ jobs:
         with:
           path: .
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    # Không cho hai lần deploy chạy chồng lên nhau
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy lên GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
@@ -82,18 +85,19 @@ jobs:
 
 Những gì mới:
 
-- **`needs: check-links`**: job `deploy` chờ `check-links` xong và **chỉ chạy khi nó xanh**. Không có `needs` thì hai job chạy song song, link hỏng vẫn được deploy.
+- **`needs: check-links`**: job `build` chờ `check-links` xong và **chỉ chạy khi nó xanh**. Job `deploy` vẫn `needs: build` như bài trước, nên cả chuỗi là `check-links` → `build` → `deploy`. Không có `needs` thì các job chạy song song, link hỏng vẫn được deploy.
 - **`pull_request`** trong `on`: mở PR là có kiểm tra link, để bạn sửa trước khi merge.
-- **`if: github.event_name != 'pull_request'`**: trên PR chỉ kiểm tra, không deploy. Job bị bỏ qua hiện màu xám.
+- **`if: github.event_name != 'pull_request'`** đặt ở job `build`: trên PR chỉ kiểm tra, không đóng gói, không deploy. Job `deploy` không cần `if` riêng: job nó `needs` bị bỏ qua thì nó cũng bị bỏ qua. Job bị bỏ qua hiện màu xám.
 - `'**/*.html'`: mọi file `.html` ở mọi thư mục. Giữ dấu nháy đơn để lychee tự tìm file.
 
 ```mermaid
 flowchart LR
   P["push lên main"] --> C["check-links"]
-  C -- xanh --> D["deploy"]
-  C -- đỏ --> X["dừng, không deploy"]
+  C -- xanh --> B["build"]
+  B --> D["deploy"]
+  C -- đỏ --> X["dừng, không build, không deploy"]
   PR["pull request"] --> C2["check-links"]
-  C2 --> S["deploy: bỏ qua"]
+  C2 --> S["build và deploy: bỏ qua"]
 ```
 
 ## Thử làm hỏng
@@ -115,5 +119,5 @@ Bỏ `--offline` thì lychee kiểm tra cả link tới LinkedIn, GitHub… Có 
 ## Tóm tắt
 
 - CI kiểm tra tự động mỗi lần thay đổi; lychee `--offline` bắt link hỏng trong repo.
-- `needs` nối job: deploy chỉ chạy khi kiểm tra xanh.
-- Trên pull request: kiểm tra, không deploy.
+- `needs` nối job thành chuỗi `check-links` → `build` → `deploy`: chỉ deploy khi kiểm tra xanh.
+- Trên pull request: kiểm tra, không build, không deploy.
