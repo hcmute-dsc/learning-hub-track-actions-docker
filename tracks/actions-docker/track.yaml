@@ -5,7 +5,7 @@
 uid: 15cfd846-ec77-41a2-914b-982c4e51d2c2
 slug: actions-docker
 title: "GitHub Actions và Docker: từ portfolio đến pipeline"
-summary: "Lấy portfolio HTML/CSS của bạn làm dự án xuyên suốt: tự deploy lên GitHub Pages bằng GitHub Actions, đóng gói bằng Docker, chạy kèm Umami và Postgres bằng Docker Compose, rồi để CI tự build, kiểm tra và đẩy image lên GHCR."
+summary: "Lấy portfolio HTML/CSS của bạn làm dự án xuyên suốt: tự deploy lên GitHub Pages bằng GitHub Actions, đóng gói bằng Docker, chạy kèm Umami và Postgres bằng Docker Compose, rồi để CI tự build, kiểm tra và đẩy image lên GHCR. Chỉ muốn học riêng một công cụ thì chọn track \"GitHub Actions cơ bản\" hoặc \"Docker và Compose cơ bản\"."
 language: vi
 level: beginner
 estimatedHours: 20
